@@ -1,0 +1,36 @@
+<div class="container pending-queries">
+    <div class="col-lg-10 col-md-10 col-sm-10 my-4">
+        <h1 class="mat-title">Query Form</h1>
+        <form [formGroup]="form">
+            <div class="input-group">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Query</mat-label>
+                    <textarea matInput placeholder="Reason" type="text" formControlName="reason"></textarea>
+                    <mat-error *ngIf="form.controls.reason.errors">
+                        <p *ngIf="form.controls.reason.errors.required">
+                            Required field
+                        </p>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Reason</mat-label>
+                    <input matInput placeholder="Reason" type="text" formControlName="reason">
+                    <mat-error *ngIf="form.controls.reason.errors">
+                        <p *ngIf="form.controls.reason.errors.required">
+                            Required field
+                        </p>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Reason</mat-label>
+                    <input matInput placeholder="Reason" type="text" formControlName="reason">
+                    <mat-error *ngIf="form.controls.reason.errors">
+                        <p *ngIf="form.controls.reason.errors.required">
+                            Required field
+                        </p>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+</div>

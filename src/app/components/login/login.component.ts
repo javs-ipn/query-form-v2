@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,8 +9,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  loginError: any;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -18,8 +20,16 @@ export class LoginComponent implements OnInit {
   initForm() {
     this.form = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)]) 
+      password: new FormControl('', [Validators.required, Validators.minLength(8)])
     })
   }
 
+  sigIn() {
+    this.loginError = true;
+    return;
+    this.router.navigate(['pending-queries']);
+    // refactor this
+    const email = this.form.controls.email.value;
+    sessionStorage.setItem('user', JSON.stringify({ email }));
+  }
 }
