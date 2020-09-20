@@ -5,31 +5,43 @@
             <div class="input-group">
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-label>Query</mat-label>
-                    <textarea matInput placeholder="Reason" type="text" formControlName="reason"></textarea>
-                    <mat-error *ngIf="form.controls.reason.errors">
-                        <p *ngIf="form.controls.reason.errors.required">
+                    <textarea matInput placeholder="Query" type="text" formControlName="query" style="resize: none;"></textarea>
+                    <mat-error *ngIf="form.controls.query.errors">
+                        <p *ngIf="form.controls.query.errors.required">
                             Required field
                         </p>
                     </mat-error>
                 </mat-form-field>
+
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Reason</mat-label>
-                    <input matInput placeholder="Reason" type="text" formControlName="reason">
-                    <mat-error *ngIf="form.controls.reason.errors">
-                        <p *ngIf="form.controls.reason.errors.required">
+                    <mat-label>Database</mat-label>
+                    <mat-select formControlName="db">
+                        <!-- <mat-option *ngFor="let f of listaFranjas" [value]="f">{{ f }}
+                        </mat-option> -->
+                        <mat-option value="volvo">Volvo</mat-option>
+                        <mat-option value="saab">Saab</mat-option>
+                        <mat-option value="mercedes">Mercedes</mat-option>
+                        <mat-option value="audi">Audi</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="form.controls.db.errors">
+                        <p *ngIf="form.controls.db.errors.required">
                             Required field
                         </p>
                     </mat-error>
                 </mat-form-field>
+
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Reason</mat-label>
-                    <input matInput placeholder="Reason" type="text" formControlName="reason">
-                    <mat-error *ngIf="form.controls.reason.errors">
-                        <p *ngIf="form.controls.reason.errors.required">
+                    <mat-label>Write a message</mat-label>
+                    <textarea matInput placeholder="Write a message" type="text" formControlName="comment" style="resize: none;"></textarea>
+                    <mat-error *ngIf="form.controls.comment.errors">
+                        <p *ngIf="form.controls.comment.errors.required">
                             Required field
                         </p>
                     </mat-error>
                 </mat-form-field>
+                <div class="w-100 justify-end">
+                    <button mat-raised-button [disabled]="!form.valid" (click)="sendQuery()">Send query</button>
+                </div>
             </div>
         </form>
     </div>

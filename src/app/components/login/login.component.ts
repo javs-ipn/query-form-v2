@@ -25,8 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   sigIn() {
-    this.loginError = true;
-    return;
+    // this.loginError = true;
     this.router.navigate(['pending-queries']);
     // refactor this
     const email = this.form.controls.email.value;

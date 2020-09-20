@@ -16,8 +16,14 @@ export class QueryFormComponent implements OnInit {
 
   initForm() {
     this.form = new FormGroup({
-      reason: new FormControl('', [Validators.required]),
+      query: new FormControl('', [Validators.required]),
+      db: new FormControl('', [Validators.required]),
+      comment: new FormControl('', [Validators.required]),
     })
+  }
+
+  sendQuery() {
+    this.form.value;
   }
 
 }
