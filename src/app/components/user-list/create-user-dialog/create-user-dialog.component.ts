@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from './../user.service'
 
 @Component({
   selector: 'app-create-user-dialog',
@@ -9,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class CreateUserDialogComponent implements OnInit {
   form: FormGroup;
   userTypes = [{ id: 1, name: 'Admin' }, { id: 2, name: 'User' }];
-  constructor() { }
+  constructor(public userService: UserService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -21,5 +22,12 @@ export class CreateUserDialogComponent implements OnInit {
       password: new FormControl('', [Validators.required]),
       userType: new FormControl([], [Validators.required]),
     })
+  }
+
+  createUser(form: any) {
+    form.value.userType = form.value.userType.id;
+    this.userService.createUser(form.value).subscribe((response) => {
+      console.log("user", response);
+    });
   }
 }

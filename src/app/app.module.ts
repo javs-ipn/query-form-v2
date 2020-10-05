@@ -15,6 +15,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { CreateUserDialogComponent } from './components/user-list/create-user-dialog/create-user-dialog.component';
 import { MyQueriesComponent } from './components/my-queries/my-queries.component';
 import { QueryFormComponent } from './components/query-form/query-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { QueryFormComponent } from './components/query-form/query-form.component
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
