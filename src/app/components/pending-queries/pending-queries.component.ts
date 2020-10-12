@@ -28,14 +28,15 @@ export class PendingQueriesComponent implements OnInit {
   }
 
   openAcceptDialog() {
-    let dialogRef = this.dialog.open(AcceptDialogComponent, {
+    this.dialog.open(AcceptDialogComponent, {
       width: '600px',
     });
   }
 
-  openRejectDialog() {
-    let dialogRef = this.dialog.open(RejectDialogComponent, {
+  openRejectDialog(query: any) {
+    this.dialog.open(RejectDialogComponent, {
       width: '600px',
+      data: query
     });
   }
 }

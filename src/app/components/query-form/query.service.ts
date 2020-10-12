@@ -13,6 +13,11 @@ export class QueryService {
         return this.httpClient.post(url, query);
     }
 
+    public rejectQuery(query: any) {
+        const url = 'http://localhost:3000/query/reject-query';
+        return this.httpClient.post(url, query);
+    }
+
     public getDatabases() {
         const url = 'http://localhost:3000/db';
         return this.httpClient.get(url);

@@ -5,13 +5,13 @@
       <div class="input-group">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Email" type="email" formControlName="email">
+          <input matInput placeholder="Email" type="email" formControlName="username">
           <mat-icon matSuffix>person</mat-icon>
-          <mat-error *ngIf="form.controls.email.errors">
-            <p *ngIf="form.controls.email.errors.required">
+          <mat-error *ngIf="form.controls.username.errors">
+            <p *ngIf="form.controls.username.errors.required">
               Required field
             </p>
-            <p *ngIf="form.controls.email.errors.email">
+            <p *ngIf="form.controls.username.errors.username">
               Invalid format
             </p>
           </mat-error>

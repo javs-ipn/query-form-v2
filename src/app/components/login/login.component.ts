@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   loginError: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public loginService: LoginService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -19,16 +21,23 @@ export class LoginComponent implements OnInit {
 
   initForm() {
     this.form = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
+      username: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
     })
   }
 
   sigIn() {
-    // this.loginError = true;
-    this.router.navigate(['pending-queries']);
+    const user = this.form.value;
+    this.loginService.sigIn(user).subscribe(
+      (response: any) => {
+        this.router.navigate(['pending-queries']);
+        sessionStorage.setItem('user', JSON.stringify(response.user));
+      },
+      err => {
+        this.loginError = true;
+      });
     // refactor this
-    const email = this.form.controls.email.value;
-    sessionStorage.setItem('user', JSON.stringify({ email }));
+    // const email = this.form.controls.email.value;
+    // sessionStorage.setItem('user', JSON.stringify({ email }));
   }
 }

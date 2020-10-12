@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-reject-dialog',
@@ -8,8 +9,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RejectDialogComponent implements OnInit {
   form: FormGroup;
-  
-  constructor() { }
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    console.log("data", data);
+  }
 
   ngOnInit(): void {
     this.initForm();
@@ -21,4 +24,7 @@ export class RejectDialogComponent implements OnInit {
     })
   }
 
+  rejectQuery() {
+    rejectMssg  
+  }
 }

@@ -32,6 +32,9 @@ export class QueryFormComponent implements OnInit {
   }
 
   sendQuery() {
+    const query = this.form.value;
+    const loggedUser = sessionStorage.getItem('user');
+    query.userName = JSON.parse(loggedUser).email;
     this.queryService.saveQuery(this.form.value).subscribe((response) => {
       this.queryError = false;
     }, (err) => {
