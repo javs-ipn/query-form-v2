@@ -1,6 +1,8 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { QueryService } from '../../query-form/query.service';
 
 @Component({
   selector: 'app-reject-dialog',
@@ -9,9 +11,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class RejectDialogComponent implements OnInit {
   form: FormGroup;
+  query: any;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
-    console.log("data", data);
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public queryService: QueryService) {
+    this.query = data;
   }
 
   ngOnInit(): void {
@@ -25,6 +28,9 @@ export class RejectDialogComponent implements OnInit {
   }
 
   rejectQuery() {
-    rejectMssg  
+    this.query.rejectMssg = this.form.value.reason;
+    this.queryService.rejectQuery(this.query).subscribe((data) => {
+      console.log("data");
+    });
   }
 }

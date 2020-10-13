@@ -36,8 +36,5 @@ export class LoginComponent implements OnInit {
       err => {
         this.loginError = true;
       });
-    // refactor this
-    // const email = this.form.controls.email.value;
-    // sessionStorage.setItem('user', JSON.stringify({ email }));
   }
 }

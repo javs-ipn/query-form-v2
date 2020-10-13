@@ -8,11 +8,13 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   logged: any;
+  isAdmin: any;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     setInterval(() => {
       this.logged = sessionStorage.getItem('user');
+      this.isAdmin = JSON.parse(this.logged).roleId === 1;
     }, 4);
   }
 

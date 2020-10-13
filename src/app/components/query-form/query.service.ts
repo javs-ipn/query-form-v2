@@ -13,6 +13,11 @@ export class QueryService {
         return this.httpClient.post(url, query);
     }
 
+    public approveQuery(query: any) {
+        const url = 'http://localhost:3000/query/approve-query';
+        return this.httpClient.post(url, query);
+    }
+
     public rejectQuery(query: any) {
         const url = 'http://localhost:3000/query/reject-query';
         return this.httpClient.post(url, query);
@@ -26,5 +31,10 @@ export class QueryService {
     public getPendingQueries() {
         const url = 'http://localhost:3000/query/pending-queries';
         return this.httpClient.get(url);
+    }
+    
+    public getUserPendingQueries(user: any) {
+        const url = 'http://localhost:3000/query/user-pending-queries';
+        return this.httpClient.post(url, user);
     }
 }

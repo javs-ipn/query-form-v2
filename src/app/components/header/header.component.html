@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse mx-4" id="navbarNav">
         <ul class="navbar-nav align-center" *ngIf="logged">
             <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="['pending-queries']" routerLinkActive="router-link-active">Pending Queries</a>
+                <a class="nav-link" href="#" [routerLink]="['pending-queries']" routerLinkActive="router-link-active" *ngIf="isAdmin">Pending Queries</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="['user-list']" routerLinkActive="router-link-active">User List</a>
+                <a class="nav-link" href="#" [routerLink]="['user-list']" routerLinkActive="router-link-active" *ngIf="isAdmin">User List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="['my-queries']" routerLinkActive="router-link-active">My Queries</a>
+                <a class="nav-link" href="#" [routerLink]="['my-queries']" routerLinkActive="router-link-active" *ngIf="!isAdmin">My Queries</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="['query-form']" routerLinkActive="router-link-active">Query Form</a>
+                <a class="nav-link" href="#" [routerLink]="['query-form']" routerLinkActive="router-link-active" *ngIf="!isAdmin">Query Form</a>
             </li>
             <li class="nav-item" (click)="logOut()">
                 <a class="nav-link align-center" href="#" tabindex="-1" aria-disabled="true">

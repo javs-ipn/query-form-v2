@@ -27,16 +27,39 @@ export class PendingQueriesComponent implements OnInit {
     });
   }
 
-  openAcceptDialog() {
-    this.dialog.open(AcceptDialogComponent, {
+  openAcceptDialog(query: any) {
+    const dialogRef =  this.dialog.open(AcceptDialogComponent, {
       width: '600px',
+      data: query
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.queryService.getPendingQueries().subscribe((response: any) => {
+        this.dataSource = new MatTableDataSource(response);
+        this.dataSource.paginator = this.paginator;
+      });
     });
   }
 
   openRejectDialog(query: any) {
-    this.dialog.open(RejectDialogComponent, {
+    const dialogRef = this.dialog.open(RejectDialogComponent, {
       width: '600px',
       data: query
+    }); 
+    dialogRef.afterClosed().subscribe(() => {
+      this.queryService.getPendingQueries().subscribe((response: any) => {
+        this.dataSource = new MatTableDataSource(response);
+        this.dataSource.paginator = this.paginator;
+      });
     });
+  }
+
+  getQueryStatus(query: any) {
+    if (query.statusId === 1) {
+      return 'Pending';
+    } else if (query.statusId === 2) {
+      return 'Approved';
+    } else if (query.statusId === 3) {
+      return 'Rejected';
+    }
   }
 }
