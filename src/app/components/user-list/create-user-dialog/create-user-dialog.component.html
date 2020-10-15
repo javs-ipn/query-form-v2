@@ -3,6 +3,17 @@
     <form [formGroup]="form">
         <div class="input-group">
             <mat-form-field appearance="outline" class="w-100">
+                <mat-label>User</mat-label>
+                <input matInput placeholder="User" type="text" formControlName="user">
+                <mat-error *ngIf="form.controls.user.errors">
+                    <p *ngIf="form.controls.user.errors.required">
+                        Required field
+                    </p>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="input-group">
+            <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="Email" type="email" formControlName="email">
                 <mat-error *ngIf="form.controls.email.errors">
@@ -26,11 +37,11 @@
         <div class="input-group">
             <mat-form-field appearance="outline" class="w-100">
                 <mat-label>User Type</mat-label>
-                <mat-select formControlName="userType">
+                <mat-select formControlName="roleId">
                     <mat-option *ngFor="let userType of userTypes" [value]="userType">{{userType.name}}</mat-option>
                 </mat-select>
-                <mat-error *ngIf="form.controls.userType.errors">
-                    <p *ngIf="form.controls.userType.errors.required">
+                <mat-error *ngIf="form.controls.roleId.errors">
+                    <p *ngIf="form.controls.roleId.errors.required">
                         Required field
                     </p>
                 </mat-error>

@@ -47,8 +47,8 @@ table {
 .mat-column-query {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 38% !important;
-  width: 38% !important;
+  flex: 0 0 20% !important;
+  width: 20% !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
 
@@ -67,8 +67,8 @@ table {
 .mat-column-query {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 35% !important;
-  width: 35% !important;
+  flex: 0 0 20% !important;
+  width: 20% !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
 
@@ -120,7 +120,24 @@ table {
   padding-bottom: 1rem !important;
 }
 
+.mat-column-reject_reason {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 20% !important;
+  width: 20% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+  padding-left: 24px !important;
+}
 
 .mat-column-actions {
   word-wrap: break-word !important;

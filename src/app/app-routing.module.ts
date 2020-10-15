@@ -6,6 +6,9 @@ import { PendingQueriesComponent } from './components/pending-queries/pending-qu
 import { UserListComponent } from './components/user-list/user-list.component';
 import { MyQueriesComponent } from './components/my-queries/my-queries.component';
 import { QueryFormComponent } from './components/query-form/query-form.component';
+import { AuthGuardService as AuthGuard } from './auth-guard.service';
+import { AdminGuardService as AdminGuard } from './admin-guard.service';
+import { UserGuardService as UserGuard } from './user-guard.service';
 
 const routes: Routes = [
   {
@@ -14,18 +17,22 @@ const routes: Routes = [
   },
   {
     path: 'pending-queries',
+    canActivate: [AuthGuard, AdminGuard],
     component: PendingQueriesComponent
   },
   {
     path: 'user-list',
+    canActivate: [AuthGuard, AdminGuard],
     component: UserListComponent
   },
   {
     path: 'my-queries',
+    canActivate: [AuthGuard, UserGuard],
     component: MyQueriesComponent
   },
   {
     path: 'query-form',
+    canActivate: [AuthGuard, UserGuard],
     component: QueryFormComponent
   },
   {

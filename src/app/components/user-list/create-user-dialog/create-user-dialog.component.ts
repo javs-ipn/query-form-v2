@@ -18,14 +18,15 @@ export class CreateUserDialogComponent implements OnInit {
 
   initForm() {
     this.form = new FormGroup({
+      user: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
-      userType: new FormControl([], [Validators.required]),
+      roleId: new FormControl([], [Validators.required]),
     })
   }
 
   createUser(form: any) {
-    form.value.userType = form.value.userType.id;
+    form.value.roleId = form.value.roleId.id;
     this.userService.createUser(form.value).subscribe((response) => {
       console.log("user", response);
     });

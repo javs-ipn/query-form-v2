@@ -30,8 +30,14 @@ export class LoginComponent implements OnInit {
     const user = this.form.value;
     this.loginService.sigIn(user).subscribe(
       (response: any) => {
-        this.router.navigate(['pending-queries']);
+        const admin = response.user.roleId === 1;
+        response.user.access_token = response.access_token; 
         sessionStorage.setItem('user', JSON.stringify(response.user));
+        if (admin) {
+          this.router.navigate(['pending-queries']);
+        } else {
+          this.router.navigate(['my-queries']);
+        }
       },
       err => {
         this.loginError = true;

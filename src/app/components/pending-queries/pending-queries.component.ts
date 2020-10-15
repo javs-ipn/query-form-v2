@@ -12,7 +12,7 @@ import { RejectDialogComponent } from './reject-dialog/reject-dialog.component';
   styleUrls: ['./pending-queries.component.css']
 })
 export class PendingQueriesComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'user', 'query', 'status', 'actions', 'comments'];
+  displayedColumns: string[] = ['position', 'user', 'query', 'status', 'actions', 'comments', 'reject_reason'];
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

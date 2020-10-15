@@ -18,6 +18,9 @@ export class MyQueriesComponent implements OnInit {
   ngOnInit(): void {
     const user = JSON.parse(sessionStorage.getItem('user'));
     this.queryService.getUserPendingQueries(user).subscribe((response: any) => {
+      response.forEach((user, index) => {
+        user.id = index + 1;         
+      });
       this.dataSource = new MatTableDataSource(response);
       this.dataSource.paginator = this.paginator;
     });

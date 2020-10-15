@@ -15,7 +15,11 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { CreateUserDialogComponent } from './components/user-list/create-user-dialog/create-user-dialog.component';
 import { MyQueriesComponent } from './components/my-queries/my-queries.component';
 import { QueryFormComponent } from './components/query-form/query-form.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+import { AuthGuardService } from './auth-guard.service';
+import { AdminGuardService } from './admin-guard.service';
+import { UserGuardService } from './user-guard.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,16 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthGuardService,
+    AdminGuardService,
+    UserGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

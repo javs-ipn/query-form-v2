@@ -12,4 +12,9 @@ export class UserService {
         const url = 'http://localhost:3000/user';
         return this.httpClient.post(url, user);
     }
+
+    public getAllUsers() {
+        const url = 'http://localhost:3000/user/get';
+        return this.httpClient.get(url);
+    }
 }

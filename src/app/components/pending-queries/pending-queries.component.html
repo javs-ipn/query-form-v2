@@ -32,12 +32,18 @@
                 <td mat-cell *matCellDef="let element"> {{element.comments}} </td>
             </ng-container>
 
+            <!-- Reject reason Column -->
+            <ng-container matColumnDef="reject_reason">
+                <th mat-header-cell *matHeaderCellDef> Reject reason </th>
+                <td mat-cell *matCellDef="let element"> {{element.rejectMssg}} </td>
+            </ng-container>
+
             <!-- Actions Column -->
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> Actions </th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-icon class="pointer" matTooltip="Accept" (click)="openAcceptDialog(element)" *ngIf="element.statusId === 1 || element.statusId === 3">done</mat-icon>
-                    <mat-icon class="pointer" matTooltip="Reject" (click)="openRejectDialog(element)" *ngIf="element.statusId === 1 || element.statusId === 3">close</mat-icon>
+                    <mat-icon class="pointer" matTooltip="Accept" (click)="openAcceptDialog(element)" *ngIf="element.statusId === 1">done</mat-icon>
+                    <mat-icon class="pointer" matTooltip="Reject" (click)="openRejectDialog(element)" *ngIf="element.statusId === 1">close</mat-icon>
                 </td>
             </ng-container>
 
