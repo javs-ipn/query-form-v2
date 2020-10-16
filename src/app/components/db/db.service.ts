@@ -5,11 +5,22 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class DBService {
+    public headersObject;
 
-    constructor(public httpClient: HttpClient) { }
+    constructor(public httpClient: HttpClient) {
+        this.headersObject = {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${this.getToken()}`,
+        };
+     }
 
     public getDatabases() {
         const url = 'http://localhost:3000/db';
-        return this.httpClient.get(url);
+        return this.httpClient.get(url, { headers: this.headersObject });
+    }
+
+    getToken() {
+        return JSON.parse(sessionStorage.getItem('user'))?.access_token;
     }
 }

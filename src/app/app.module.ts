@@ -45,12 +45,7 @@ import { UserGuardService } from './user-guard.service';
   providers: [
     AuthGuardService,
     AdminGuardService,
-    UserGuardService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    }
+    UserGuardService
   ],
   bootstrap: [AppComponent]
 })
