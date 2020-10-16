@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let headersObject;
-    if (this.getToken()) {
+    const loginUrl = req.url.indexOf("login") !== -1;
+    if (!loginUrl) {
       headersObject = {
         'Content-Type' : 'application/json; charset=utf-8',
         'Accept'       : 'application/json',
