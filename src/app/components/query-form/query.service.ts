@@ -16,32 +16,32 @@ export class QueryService {
     }
 
     public saveQuery(query: any) {
-        const url = 'http://localhost:3000/query';
+        const url = 'https://api-backend.gshp-apps.com:40000/query';
         return this.httpClient.post(url, query, { headers: this.headersObject });
     }
 
     public approveQuery(query: any) {
-        const url = 'http://localhost:3000/query/approve-query';
+        const url = 'https://api-backend.gshp-apps.com:40000/query/approve-query';
         return this.httpClient.post(url, query, { headers: this.headersObject });
     }
 
     public rejectQuery(query: any) {
-        const url = 'http://localhost:3000/query/reject-query';
+        const url = 'https://api-backend.gshp-apps.com:40000/query/reject-query';
         return this.httpClient.post(url, query, { headers: this.headersObject });
     }
 
     public getDatabases() {
-        const url = 'http://localhost:3000/db';
+        const url = 'https://api-backend.gshp-apps.com:40000/db';
         return this.httpClient.get(url, { headers: this.headersObject });
     }
 
     public getPendingQueries() {
-        const url = 'http://localhost:3000/query/pending-queries';
+        const url = 'https://api-backend.gshp-apps.com:40000/query/pending-queries';
         return this.httpClient.get(url, { headers: this.headersObject });
     }
 
     public getUserPendingQueries(user: any) {
-        const url = 'http://localhost:3000/query/user-pending-queries';
+        const url = 'https://api-backend.gshp-apps.com:40000/query/user-pending-queries';
         return this.httpClient.post(url, user, { headers: this.headersObject });
     }
 
