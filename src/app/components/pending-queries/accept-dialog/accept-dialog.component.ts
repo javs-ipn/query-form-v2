@@ -9,7 +9,8 @@ import { QueryService } from '../../query-form/query.service';
 })
 export class AcceptDialogComponent implements OnInit {
   query: any;
-  loginError: boolean;
+  queryError: any;
+  typeError: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public queryService: QueryService, private dialogRef: MatDialogRef<AcceptDialogComponent>) { 
     this.query = data;
@@ -19,11 +20,12 @@ export class AcceptDialogComponent implements OnInit {
   }
 
   approveQuery() {
-    this.queryService.approveQuery(this.query).subscribe((data) => {
-      if (!data) {
-        this.loginError = true;
+    this.queryService.approveQuery(this.query).subscribe((data: any) => {
+      if (data.error) {
+        this.queryError = data.error;
+        this.typeError = data.typeError;
       } else { 
-        this.loginError = false;
+        this.queryError = data.error;
         this.dialogRef.close();
       }
     });
